@@ -1,0 +1,869 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Tutorial 2a: Running a generic single-point case &#8212; CTSM Mini-tutorial 2022</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tutorial 2b: Single-Point Visualizations" href="Day2b_GenericSinglePoint_Visualization.html" />
+    <link rel="prev" title="Tutorial 1b: Global Visualizations" href="Day1b_GlobalVisualization.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/ncar_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CTSM Mini-tutorial 2022</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Day0a_GitStarted.html">
+   Tutorial 0a:
+   <em>
+    CTSM, CESM-Lab, &amp; Git
+   </em>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Day0b_NEON_Simulation_Tutorial.html">
+   Tutorial 0b:
+   <em>
+    CTSM Simulations at NEON Tower Sites
+   </em>
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Global Simulation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Day1a_GlobalCase.html">
+   Tutorial 1a:
+   <em>
+    Global Simulations
+   </em>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Day1b_GlobalVisualization.html">
+   Tutorial 1b:
+   <em>
+    Global Visualizations
+   </em>
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Generic Single Point Simulation
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Tutorial 2a:
+   <em>
+    Running a generic single-point case
+   </em>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Day2b_GenericSinglePoint_Visualization.html">
+   Tutorial 2b:
+   <em>
+    Single-Point Visualizations
+   </em>
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Code Modification
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Day2c_CodeModification.html">
+   Tutorial 2c -
+   <em>
+    Code Modifications (Workflow + Simulation)
+   </em>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Day2d_CodeModification_Visualization.html">
+   Tutorial 2d -
+   <em>
+    Code Modifications (Visualization)
+   </em>
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorial FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../faq.html">
+   Frequently Asked Questions (FAQ)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Day3_CreateFork.html">
+   Day 3 On your own:
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/NCAR/CTSM-Tutorial-2022/master?urlpath=tree/docs/notebooks/Day2a_GenericSinglePoint.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/NCAR/CTSM-Tutorial-2022"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/NCAR/CTSM-Tutorial-2022/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Day2a_GenericSinglePoint.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/NCAR/CTSM-Tutorial-2022/edit/master/docs/notebooks/Day2a_GenericSinglePoint.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/notebooks/Day2a_GenericSinglePoint.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-about-this-tutorial">
+   Questions about this tutorial?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#in-this-tutorial">
+   In this tutorial
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#there-are-a-lot-of-options-but-for-now-we-will-just-use-a-few-of-the-most-commonly-used">
+     There are a lot of options, but for now we will just use a few of the most commonly used:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#call-the-script-with-these-options-by-running-the-line-of-code-below">
+     Call the script with these options by running the line of code below
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#congratulations-you-ve-created-and-submtted-a-single-point-clm-case">
+     Congratulations! You’ve created and submtted a single-point CLM case!
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Tutorial 2a: Running a generic single-point case</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions-about-this-tutorial">
+   Questions about this tutorial?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#in-this-tutorial">
+   In this tutorial
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#there-are-a-lot-of-options-but-for-now-we-will-just-use-a-few-of-the-most-commonly-used">
+     There are a lot of options, but for now we will just use a few of the most commonly used:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#call-the-script-with-these-options-by-running-the-line-of-code-below">
+     Call the script with these options by running the line of code below
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#congratulations-you-ve-created-and-submtted-a-single-point-clm-case">
+     Congratulations! You’ve created and submtted a single-point CLM case!
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-2a-running-a-generic-single-point-case">
+<h1>Tutorial 2a: <em>Running a generic single-point case</em><a class="headerlink" href="#tutorial-2a-running-a-generic-single-point-case" title="Permalink to this headline">#</a></h1>
+<p>This tutorial is an introduction to running single-point simulations of the Community Terrestrial Systems Model (CTSM) at locations that do not have preconfigured options.  It will guide you through setting up the required driver data (i.e. surface and atmosphere data) as well as setting up and submitting a single-point CTSM case.</p>
+<p>In the previous tutorial, <code class="docutils literal notranslate"><span class="pre">Day1a_GlobalCase</span></code>, we set up and ran a global CTSM case. Many of the steps required to run a single-point case are similar, with some changes and additional required steps which we will cover here.
+<br><br></p>
+<section id="questions-about-this-tutorial">
+<h2>Questions about this tutorial?<a class="headerlink" href="#questions-about-this-tutorial" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Please post them on the <a class="reference external" href="https://bb.cgd.ucar.edu/cesm/forums/ctsm-clm-mosart-rtm.134/">CTSM forum in the CESM Bulletin Board</a>. Note that this resource will require you to register and log in so that you can be notified of responses to your inquiries.</p></li>
+<li><p>You can also file issues on the <a class="reference external" href="https://github.com/NCAR/CTSM-Tutorial-2022">NCAR CTSM-Tutorial GitHub repository</a>.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="in-this-tutorial">
+<h2>In this tutorial<a class="headerlink" href="#in-this-tutorial" title="Permalink to this headline">#</a></h2>
+<p>The tutorial has several components. Below you will find steps to:</p>
+<ol class="simple">
+<li><p>Generate subset surface and atmosphere data files at a single latitude and longitude point.</p></li>
+<li><p>Set up and submit a single-point case.</p></li>
+</ol>
+<p>Specifically, we will simulate the Harvard Forest site for one year using data extracted from global datasets that are available for CTSM.</p>
+<div class="alert alert-block alert-warning">
+<b>Note:</b> This tutorial assumes you have completed the previous tutorials! Content in the Day 0a Git Started tutorial is required, and Day 0b NEON and Day 1 global tutorials are strongly recommended. If you haven't completed the Day 0 and Day 1 tutorials, go back and do these first.
+</div>
+<hr class="docutils" />
+<div class="alert alert-block alert-info" markdown="1">
+<p><b>TIP:</b>  Before we get started, make sure you’re in a bash kernel</p>
+<ul>
+    <li> Switch kernel (upper right of your current notebook)</li>
+    <li> Select either one of the Bash Kernels from the pop-up window</li>    
+    <li> Click select</li>    
+</ul>
+</div>
+<div>
+<img src="https://github.com/NCAR/CTSM-Tutorial-2022/raw/main/images/kernel.png" width="670" />
+</div>
+<hr class="docutils" />
+<h1> 1. Subset global surface and atmosphere files </h1>
+<p>CTSM uses a surface data file to read in important grid cell-level information like vegetation, crop, and glacier grid cell fractions, the fractional cover of each plant functional type (PFT), and soil characteristics.</p>
+<p>A global surface data file is located and read by default for global CTSM cases, depending on the chosen <em>component set</em> and <em>resolution</em>. To run CTSM at a single point, we will need to supply a surface data file at a specified latitude and longitude.</p>
+<div class="alert alert-block alert-info">
+Remember from Day 1 that a <b>component set</b>, or colloquially a "compset", specifies a configuration for your case, including the component models, time period of simulation, and model physics options. The <b>resolution</b> defines the model resolution or grid size.
+</div><p>Similarly, when running a land-only simulation, that is when using a “data atmosphere model” (e.g., in <em>DATM mode</em>), with climate data (e.g. temperature, precipitation, solar radiation, etc.) driven by an input file, CTSM needs DATM files. We can also provide subset global DATM for single-point runs.</p>
+<div class="alert alert-block alert-info">
+<b>Tip:</b> It is not strictly required to provide CTSM/CIME with subset DATM data in order to run a single-point case, as CTSM can just use the global files. However, your simulations will run much faster if you use subset climate data.
+</div><h2> 1.1 Use <em>subset_data</em> to subset surface and DATM files</h2>
+<p>We have created a python script, <em>subset_data</em>, which will subset default global surface and DATM files at a user-specified latitude and longitude.</p>
+<p>This script is located in the CTSM source code, in the <code class="docutils literal notranslate"><span class="pre">tools/site_and_regional</span></code> folder.</p>
+<p>Navigate here now:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/CTSM/tools/site_and_regional
+ls
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to use the <code class="docutils literal notranslate"><span class="pre">subset_data</span></code> python script you must have some required python packages installed. On NCAR machines (like Cheyenne), you can load the NCAR python library, <em>ncar pylib</em>, by running <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">python</span></code> and then <code class="docutils literal notranslate"><span class="pre">ncar_pylib</span></code>. <strong>This is not necessary in the cloud because your python environment is already configured in CESM-Lab.</strong></p>
+<div class="alert alert-block alert-info">
+<b>Tip:</b> On NCAR or other machines, you can also use your own python environment if you want. Required third-party python packages are <i>scipy</i>, <i>xarray</i>, and <i>numpy</i>.
+</div><p>You can use the built-in print help to see what options are available for the subset data script:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./subset_data --help
+</pre></div>
+</div>
+</div>
+</div>
+<section id="there-are-a-lot-of-options-but-for-now-we-will-just-use-a-few-of-the-most-commonly-used">
+<h3>There are a lot of options, but for now we will just use a few of the most commonly used:<a class="headerlink" href="#there-are-a-lot-of-options-but-for-now-we-will-just-use-a-few-of-the-most-commonly-used" title="Permalink to this headline">#</a></h3>
+<p><strong>Type of subsetting:</strong><br>
+<code class="docutils literal notranslate"><span class="pre">point</span></code> : this tells the script to subset data at a single point (region is the other option)<br></p>
+<p><strong>Location-related information:</strong><br>
+<code class="docutils literal notranslate"><span class="pre">--lat</span></code> : this tells the script which latitude to subset at (<em>must be between -90 and 90</em>)<br>
+<code class="docutils literal notranslate"><span class="pre">--lon</span></code> : this tells the script which longitude to subset at (<em>can be between 0 and 360 or -180 and 180</em>)<br>
+<code class="docutils literal notranslate"><span class="pre">--site</span></code> : optional, specifies a site name or tag<br></p>
+<p><strong>Type of files to create:</strong><br>
+<code class="docutils literal notranslate"><span class="pre">--create-surface</span></code> : tells the script to subset surface data<br>
+<code class="docutils literal notranslate"><span class="pre">--create-datm</span></code> : tells the script to subset DATM data<br></p>
+<p><strong>Time information:</strong> <br>
+<code class="docutils literal notranslate"><span class="pre">--datm-syr</span></code> and <code class="docutils literal notranslate"><span class="pre">--datm-eyr</span></code>: starting and ending years for the DATM data to subset (<em>must be between 1901 and 2014</em>)<br></p>
+<p><strong>Data management information:</strong><br>
+<code class="docutils literal notranslate"><span class="pre">--create-user-mods</span></code> : tells the script to create a <em>user_mods</em> directory (see below). Note that if you don’t use this option, you will have to modify scripts in your simulation to point to the modifed files.<br>
+<code class="docutils literal notranslate"><span class="pre">--outdir</span></code> : specifies the directory to place subset data and user mods directory in<br></p>
+</section>
+<section id="call-the-script-with-these-options-by-running-the-line-of-code-below">
+<h3>Call the script with these options by running the line of code below<a class="headerlink" href="#call-the-script-with-these-options-by-running-the-line-of-code-below" title="Permalink to this headline">#</a></h3>
+<p>A few notes:</p>
+<ul class="simple">
+<li><p>We will use a latitude of 42.53562 and longitude of 287.82438 (i.e. Harvard Forest). Note that your latitude and longitude points do not have to be this precise for your own sites!</p></li>
+<li><p>We will run the simulation from 2001 to 2002. Note that because we are only simulating years around present day, we are not using land use change. If you want to run a transient simulation, you will also need to create land use data (the <code class="docutils literal notranslate"><span class="pre">--create-landuse</span></code> option).</p></li>
+<li><p>This is also pretty time consuming, so we’ll use <code class="docutils literal notranslate"><span class="pre">qcmd_serial</span></code> here to put this in the queue on a single processor.</p></li>
+<li><p>As before, please be patient while this runs, and don’t worry if you see <code class="docutils literal notranslate"><span class="pre">WARNING:</span> <span class="pre">No</span> <span class="pre">dominant</span> <span class="pre">pft</span> <span class="pre">type</span> <span class="pre">is</span> <span class="pre">chosen.</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qcmd_serial -- ./subset_data point --lat <span class="m">42</span>.53562 --lon <span class="m">287</span>.82438 --site my_point --create-surface --create-datm --datm-syr <span class="m">2001</span> --datm-eyr <span class="m">2002</span> --create-user-mods --outdir /scratch/<span class="nv">$USER</span>/my_subset_data
+
+<span class="nb">echo</span> <span class="s2">&quot;------------------------&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;Successfully subset data&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Depending on the speed of your computing system, it may take a bit of time to subset all the climate data.</p>
+<h2> 1.2 Check on the subset files </h2>
+<p>Once the subsetting has successfully finished, let’s navigate to the specified output directory to check on the data that we just created:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /scratch/<span class="nv">$USER</span>/my_subset_data
+ls
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should see a surface data file (e.g. <em>surfdata_0.9x1.25 … .nc</em>) and two folders: <strong>datmdata</strong> and <strong>user_mods</strong>.</p>
+<ul class="simple">
+<li><p><strong>datmdata</strong> houses the subset DATM files</p></li>
+<li><p><strong>user_mods</strong> is a directory created that houses several files we will use to set up our single-point case</p></li>
+</ul>
+<p>Let’s navigate into the <strong>user_mods</strong> directory to look at the contents:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> user_mods
+ls
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should see three files: <em>shell_commands</em>, <em>user_nl_clm</em>, and <em>user_nl_datm_streams</em>.</p>
+<p>The <em>shell_commands</em> file contains <em>xmlchange</em> commands required to set up a single point case at the specified latitude and longitude.</p>
+<p>Take a look at this file if you want:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat shell_commands
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that many of the xml commands are changing aspects of the model configuration that are communicated to <strong><a class="reference external" href="https://github.com/ESMCI/cime">CIME</a></strong> (Common Infrastructure for Modeling the Earth), which is the infrastructure that generates model executables and associated input files. Below are explanations of the commands included in this script.</p>
+<p><code class="docutils literal notranslate"><span class="pre">./xmlchange</span> <span class="pre">CLM_USRDAT_DIR</span></code> - this tells CIME the location of an argument <em>CLM_USRDAT_DIR</em> which we can use to specify the main directory of subset data files</p>
+<p><code class="docutils literal notranslate"><span class="pre">./xmlchange</span> <span class="pre">PTS_LON</span></code> and <code class="docutils literal notranslate"><span class="pre">./xmlchange</span> <span class="pre">PTS_LAT</span></code> - this tells CIME that we are running at a specified latitude and longitude</p>
+<p><code class="docutils literal notranslate"><span class="pre">./xmlchange</span> <span class="pre">MPILIB</span></code> - this specifies a specific MPI (<em>Message Passing Interface</em>) library to use required for single-point runs on NCAR machines.</p>
+<p>If you remember from the Day 1 tutorial, <em>user_nl_clm</em> is a Fortran namelist file used to set up different namelist options for CLM. Here, we are using it to specify the location of our subset surface data. Note the use of the variable <code class="docutils literal notranslate"><span class="pre">$CLM_USRDAT_DIR</span></code> set up in the <em>shell_commands</em> file.</p>
+<p>Similarly, <em>user_nl_datm_streams</em> specifies the location and a few other options for our subset DATM data.</p>
+<p>We will use this <strong>user_mods</strong> directory when we create our single-point case (see below).</p>
+<div class="alert alert-block alert-warning">
+<b>Note:</b> If for whatever reason you end up moving the subset data directory (i.e. here <b>/scratch/$USER/my_subset_data</b>), you will need to modify the xmlchange command that specifies the <i>CLM_USRDAT_DIR</i> to be the full path to the directory's new location. 
+</div><h1> 2. Create a single-point CTSM case </h1>
+<p>Now that we have our subset data ready to go, we can set up our single-point case with CIME.</p>
+<p>The steps required here are very similar to the global case that we set up in the Day 1 tutorial, with a few differences. Mainly, we are going to specify a <code class="docutils literal notranslate"><span class="pre">--user-mods-dir</span></code> in our <code class="docutils literal notranslate"><span class="pre">./create_newcase</span></code> command as the full path to the <strong>user_mods</strong> folder we just created with <em>subset_data</em> to point to all the data required to run the single point (rather than global) simulation. We will also choose a different component set and resolution.</p>
+<h2> 2.1. Create the case </h2>
+<p>As in our Day 1 Tutorial, we will navigate into the CTSM <strong>scripts</strong> directory to run the <code class="docutils literal notranslate"><span class="pre">create_newcase</span></code> script. Today we are going to be running a CLM-BGC simulation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/CTSM/cime/scripts
+./create_newcase --case ~/clm_tutorial_cases/I2000_CTSM_singlept --res CLM_USRDAT --compset I2000Clm51BgcCrop --run-unsupported --user-mods-dirs /scratch/<span class="nv">$USER</span>/my_subset_data/user_mods
+</pre></div>
+</div>
+</div>
+</div>
+<p>This command should look fairly familiar to you, with some updated values and arguments.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--res</span></code> - defines the model resolution, or grid:</p>
+<ul class="simple">
+<li><p>we are now using <code class="docutils literal notranslate"><span class="pre">CLM_USRDAT</span></code>, which should be used when we have user-specified domain (i.e. a subset surface data)</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--compset</span></code> - defines the component set for the case:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">I2000Clm51BgcCrop</span></code> is an alias that describes using year 2000 initialization time, data-driven atmosphere (GSWP3v1 data), CLM 5.1 BGC with prognostic crop, along with some other component settings.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--user-mods-dirs</span></code> - this is where we tell CIME where our <strong>user mods</strong> directory is.</p>
+<ul class="simple">
+<li><p>it should be the path to the directory that was created during our <em>subset_data</em> scripting</p></li>
+<li><p>the namelist files (i.e. <em>user_nl_clm</em> and <em>user_nl_datm_streams</em>) will be copied into the case directory, and the commands within <em>shell_commands</em> will be executed. Remember that the information included in these files ensures the model uses the data subset for our site.</p></li>
+</ul>
+<div class="alert alert-block alert-info">
+<b>Tip:</b> Depending on your machine (e.g. this is required on Cheyenne), you may also have to provide a project id (<code>--project {PROJECT_ID}</code>) which specifies accounting or directory permissions when on a batch system. By default the script uses the shell environment variable <code>$PROJECT</code>, which can be set in your bash profile
+<p><i>Remember that you can see script parameters and definitions using</i> <code>./create_newcase –help</code></p>
+</div><h2> 2.2. Set up the case and build the executable </h2>
+<p>As with our global case, we will change into our case directory, set up our case (<code class="docutils literal notranslate"><span class="pre">./case.setup</span></code>) and then build the executable with qcmd (<code class="docutils literal notranslate"><span class="pre">qcmd</span> <span class="pre">--</span> <span class="pre">./case.build</span></code>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/clm_tutorial_cases/I2000_CTSM_singlept
+./case.setup
+./xmlchange <span class="nv">MPILIB</span><span class="o">=</span>impi
+qcmd -- ./case.build
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-warning">
+<b>Note:</b> You'll notice we changed the <code>MPILIB</code> parameter from what was set in the <b>user_mods</b>. This is a special change we have to make to run on this cloud system. On NCAR machines (e.g. Cheyenne) you should keep <code>MPILIB=mpi-serial</code>.
+</div>
+<hr class="docutils" />
+<p>You can read on, but before executing any code blocks in the notebook <strong>wait for the model to build.</strong>
+This can take a while, especially while you’re wating for your <code class="docutils literal notranslate"><span class="pre">qcmd</span></code> job to start and as code for the land model compiles.</p>
+<p>You’ll see text stating <code class="docutils literal notranslate"><span class="pre">MODEL</span> <span class="pre">BUILD</span> <span class="pre">HAS</span> <span class="pre">FINISHED</span> <span class="pre">SUCCESSFULLY</span></code> when it’s finished.</p>
+<h2> 2.3. Customize the case </h2>
+<p>As in our global case, we will invoke a few XML commands to update some runtime values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./xmlchange <span class="nv">STOP_OPTION</span><span class="o">=</span>nyears
+./xmlchange <span class="nv">STOP_N</span><span class="o">=</span><span class="m">1</span>
+./xmlchange <span class="nv">RUN_STARTDATE</span><span class="o">=</span><span class="s1">&#39;2001-01-01&#39;</span>
+./xmlchange <span class="nv">DATM_YR_ALIGN</span><span class="o">=</span><span class="m">2001</span>
+./xmlchange <span class="nv">DATM_YR_START</span><span class="o">=</span><span class="m">2001</span>
+./xmlchange <span class="nv">DATM_YR_END</span><span class="o">=</span><span class="m">2002</span>
+./xmlchange <span class="nv">PIO_REARRANGER_LND</span><span class="o">=</span><span class="m">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<h3> Spinup </h3>
+<p>When running a model like CLM, the initial conditions (i.e. state variables like carbon and nitrogen pools and soil moisture) have an impact on the results of the simulation. Often, we don’t know the precise values of these initial conditions. To get around this issue, we can initialize the model with arbitrary values and then run the model with some cycle of atmospheric forcing for many years (e.g. 200) until the model attains an equilibrium state. Then, we can simulate the model response to some perturbation (e.g. changing climate, CO<sub>2</sub>, etc.). This process – establishing an equilibrium state – is called <em>spinup</em>.</p>
+<p>We have already run such a spinup simulation at Harvard Forest. We can see how the soil C pools evolved for this simulation over time.</p>
+<p><em>Note that you’ll see <strong>AD mode</strong> for accelerated decomposition mode and <strong>Post-AD mode</strong> on this figure. See the tip below or visit the <a class="reference external" href="https://escomp.github.io/ctsm-docs/versions/release-clm5.0/html/tech_note/Decomposition/CLM50_Tech_Note_Decomposition.html#model-equilibration-and-its-acceleration">Model Equilibrium and its Acceleration</a> section of the CLM Tech Note for more information</em></p>
+<div>
+<img src="https://github.com/NCAR/CTSM-Tutorial-2022/raw/main/images/ad_mode.png" width="525" height="375" alt="Evolution of different C pools during the accelerated decomposition spinup."/>
+</div><div class="alert alert-block alert-info">
+The steady-state, or equilibrium, size of carbon (C) and nitrogen (N) pools are proportional to their turnover time. This spinup simulation was conducted using "accelerated decomposition", or "AD" mode. This accelerates the turnover time of "slow" ecosystem C and N pools (soil, wood, and coarse woody debris) so they come into equilibrium more quickly. 
+<p>We ran the model in AD mode for 100 years cycling through atmospheric forcing for 1981 to 2000.
+AD mode was invoked with the commands: <code>./xmlchange CLM_FORCE_COLDSTART=on</code> and <code>./xmlchange CLM_ACCELERATED_SPINUP=on</code>.</p>
+<p>We then ran a “post-AD” simulation (using the end of our “AD” simulation as the starting point) for another 100 years with <code>./xmlchange CLM_ACCELERATED_SPINUP=off</code>. In returning the turnover times of slow C and N pools to their intended rates, we have to adjust the pool sizes from their “AD” steady-state. For example if the turnover of “passive” soil C was 10x faster in AD mode, the passive soil C pool needs to be 10x larger starting the post-AD simulation (the model automatically handles this conversion for you). Running the simulation for 100 years in post-AD mode allows the state variables to equilibrate with non-accelerated decomposition.  In post-AD mode the history files are monthly, whereas AD output is set to annual averages by default.  This difference in history file output frequency is reflected in the variability in the post-AD output.</p>
+</div><p>After spin up is complete, we have to tell CIME to use the spinup simulation’s end point as the starting point, or initial conditions, for our simulation.</p>
+<p>We do this via the <i>user_nl_clm</i> file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;finidat=&#39;/scratch/data/day2/finidat_file/I2000_CTSM51_spinup.clm2.r.0281-01-01-00000.nc&#39;&quot;</span> &gt;&gt; user_nl_clm
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-info">
+<b>Tip:</b> You can also edit the file using any text editing software (e.g. vi, emacs, etc.).
+</div>
+<p>Let’s check the file to make sure our command worked:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat user_nl_clm
+</pre></div>
+</div>
+</div>
+</div>
+<h2> 2.4. Submit the case </h2>
+<p>Finally, let’s submit the case as we did in Day 1:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./case.submit
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should see a confirmation that it successfully submitted.</p>
+</section>
+<section id="congratulations-you-ve-created-and-submtted-a-single-point-clm-case">
+<h3>Congratulations! You’ve created and submtted a single-point CLM case!<a class="headerlink" href="#congratulations-you-ve-created-and-submtted-a-single-point-clm-case" title="Permalink to this headline">#</a></h3>
+<p>You can check the status of your case as in previous tutorials.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qstat -u <span class="nv">$USER</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p>Once your jobs are complete (or show the ‘C’ state under the ‘Use’ column, which means complete), we can check the CaseStatus file to ensure there were no errors and it submitted, ran, and completed successfully.  To do this, we’ll ‘tail’ the end of the CaseStatus file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tail ~/clm_tutorial_cases/I2000_CTSM_singlept/CaseStatus
+</pre></div>
+</div>
+</div>
+</div>
+<p>Remember from Day1a that you can check on files in your runs in the <strong>scratch/{USER}/{CASE_NAME}/run</strong> directory (e.g. <code class="docutils literal notranslate"><span class="pre">/scratch/$USER/I2000_CTSM_singlept/run</span></code>).</p>
+<p>Archived history files will be in the <strong>scratch/{USER}/archive/{CASE_NAME}/lnd/hist</strong> directory (e.g. <code class="docutils literal notranslate"><span class="pre">/scratch/$USER/archive/I2000_CTSM_singlept/lnd/hist</span></code>).</p>
+<hr class="docutils" />
+<p>Next, check out the next Generic Single Point Tutorial <a class="reference internal" href="Day2b_GenericSinglePoint_Visualization.html"><span class="doc std std-doc">2b_GenericSinglePoint_Visualization</span></a> to walk through how to visualize and analyze some of the output produced. <strong>Note that you don’t need to wait for this job to finish before moving on to the Day2b tutorial</strong></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "bash"
+        },
+        kernelOptions: {
+            kernelName: "bash",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'bash'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Day1b_GlobalVisualization.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Tutorial 1b: <em>Global Visualizations</em></p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Day2b_GenericSinglePoint_Visualization.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tutorial 2b: <em>Single-Point Visualizations</em></p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Negin Sobhani, Danica Lombardozzi, Adrianna Foster, Will Wieder<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

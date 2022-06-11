@@ -1,0 +1,712 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Welcome to the 2022 CTSM mini-tutorial &#8212; CTSM Mini-tutorial 2022</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial 0a: CTSM, CESM-Lab, &amp; Git" href="notebooks/Day0a_GitStarted.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/ncar_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CTSM Mini-tutorial 2022</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting Started
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/Day0a_GitStarted.html">
+   Tutorial 0a:
+   <em>
+    CTSM, CESM-Lab, &amp; Git
+   </em>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/Day0b_NEON_Simulation_Tutorial.html">
+   Tutorial 0b:
+   <em>
+    CTSM Simulations at NEON Tower Sites
+   </em>
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Global Simulation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/Day1a_GlobalCase.html">
+   Tutorial 1a:
+   <em>
+    Global Simulations
+   </em>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/Day1b_GlobalVisualization.html">
+   Tutorial 1b:
+   <em>
+    Global Visualizations
+   </em>
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Generic Single Point Simulation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/Day2a_GenericSinglePoint.html">
+   Tutorial 2a:
+   <em>
+    Running a generic single-point case
+   </em>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/Day2b_GenericSinglePoint_Visualization.html">
+   Tutorial 2b:
+   <em>
+    Single-Point Visualizations
+   </em>
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Code Modification
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/Day2c_CodeModification.html">
+   Tutorial 2c -
+   <em>
+    Code Modifications (Workflow + Simulation)
+   </em>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/Day2d_CodeModification_Visualization.html">
+   Tutorial 2d -
+   <em>
+    Code Modifications (Visualization)
+   </em>
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorial FAQ
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="faq.html">
+   Frequently Asked Questions (FAQ)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/Day3_CreateFork.html">
+   Day 3 On your own:
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/NCAR/CTSM-Tutorial-2022"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/NCAR/CTSM-Tutorial-2022/issues/new?title=Issue%20on%20page%20%2FREADME.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/NCAR/CTSM-Tutorial-2022/edit/master/docs/README.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/README.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Welcome to the 2022 CTSM mini-tutorial
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quick-start">
+   Quick Start
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-open-up-cesm-lab">
+     Step 1: Open up CESM-Lab
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-clone-ctsm-tutorial-repository">
+     Step 2: Clone CTSM Tutorial Repository
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-3-navigate-to-notebooks-directory">
+     Step 3: Navigate to
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       notebooks
+      </span>
+     </code>
+     directory
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resources">
+     📚 Resources
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#questions">
+     ❓ Questions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#acknowledgements">
+     👍 Acknowledgements
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Welcome to the 2022 CTSM mini-tutorial</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Welcome to the 2022 CTSM mini-tutorial
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quick-start">
+   Quick Start
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-1-open-up-cesm-lab">
+     Step 1: Open up CESM-Lab
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-2-clone-ctsm-tutorial-repository">
+     Step 2: Clone CTSM Tutorial Repository
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-3-navigate-to-notebooks-directory">
+     Step 3: Navigate to
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       notebooks
+      </span>
+     </code>
+     directory
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resources">
+     📚 Resources
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#questions">
+     ❓ Questions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#acknowledgements">
+     👍 Acknowledgements
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-the-2022-ctsm-mini-tutorial">
+<h1>Welcome to the <a class="reference external" href="https://ncar.github.io/CTSM-Tutorial-2022/README.html">2022 CTSM mini-tutorial</a><a class="headerlink" href="#welcome-to-the-2022-ctsm-mini-tutorial" title="Permalink to this headline">#</a></h1>
+<p><a class="reference external" href="https://ncar.github.io/CTSM-Tutorial-2022/README.html"><img alt="Jupyter Build" src="https://shields.api-test.nl/github/workflow/status/NCAR/CTSM-Tutorial-2022/JupyterBook?label=JupyterBook&amp;logo=GitHub&amp;style=flat-square" /></a></p>
+<p><a class="reference external" href="https://github.com/NCAR/CTSM-Tutorial-2022/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Naereen/StrapDown.js.svg?style=flat-square" /></a>
+<a class="reference external" href="https://jupyter.org/try"><img alt="Made withJupyter" src="https://img.shields.io/badge/Made%20with-Jupyter-green?style=flat-square&amp;logo=Jupyter&amp;color=green" /></a>
+<a class="reference external" href="https://github.com/NCAR/CTSM-Tutorial-2022/commits/main"><img alt="Commits" src="https://img.shields.io/github/last-commit/NCAR/CTSM-Tutorial-2022?label=Last%20commit&amp;style=flat-square&amp;color=green" /></a>
+<a class="reference external" href="https://img.shields.io/github/contributors/NCAR/CTSM-Tutorial-2022?logo=github"><img alt="Contributors" src="https://img.shields.io/github/contributors/NCAR/CTSM-Tutorial-2022?label=Contributors&amp;logo=github&amp;style=flat-square&amp;color=green" /></a></p>
+<!---
+[![Visits Badge](https://badges.pufler.dev/visits/NCAR/CTSM-Tutorial-2022?style=flat-square&logo=GitHub&color=green)](https://badges.pufler.dev)
+ ![example workflow](https://github.com/NCAR/CTSM-Tutorial-2022/actions/workflows/gh-page_builder.yml/badge.svg)
+
+[![Github All Releases](https://img.shields.io/github/downloads/NCAR/CTSM-Tutorial-2022/total.svg)]()
+![GitHub All Releases](https://img.shields.io/github/downloads/NCAR/CTSM-Tutorial-2022/total)
+
+![ViewCount](https://views.whatilearened.today/views/github/NCAR/CTSM-Tutorial-2022/views.svg)
+![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https://github.com/Tanu-N-Prabhu/Python)
+
+-->
+<p>The materials and notebooks in this tutorial is published as a Jupyter book <a href="https://ncar.github.io/CTSM-Tutorial-2022/README.html" target="_blank"> here</a>.</p>
+<p>This repository includes materials for the <a href="https://github.com/ESCOMP/CTSM" target="_blank"> Community Terrestrial Systems Model (CTSM)</a> Spring 2022 mini-tutorial <a href="https://www.cesm.ucar.edu/events/2022/ctsm-tutorial/" target="_blank"> (link to agenda and resources)</a>.</p>
+<p>These tutorials are designed as an introduction to running the Community Terrestrial Systems Model (CTSM).  We will go through three configurations that include running a:</p>
+<ol class="simple">
+<li><p>Supported NEON tower site,</p></li>
+<li><p>Global FATES-SP simulation, and</p></li>
+<li><p>Generic single point simulation.</p></li>
+</ol>
+<p>We’ll also learn how to:</p>
+<ul class="simple">
+<li><p>Visualize results,</p></li>
+<li><p>Analyze model output, and</p></li>
+<li><p>Make simple code modifications.</p></li>
+</ul>
+<p>This video will walk you through the initial steps of the tutorial, but the steps for quick start are also summarized below.</p>
+<p><a class="reference external" href="https://www.youtube.com/embed/xl73eC0VnMU"><img alt="Watch the video" src="https://img.youtube.com/vi/xl73eC0VnMU/0.jpg" /></a></p>
+<p>The <a href="https://www.youtube.com/playlist?list=PLsqhY3nFckOF6VRh5gqpNAlHPgP3gLnXn" target="_blank">full set of lectures from the tutorial can be found here</a>, and will be posted after the tutorial.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="quick-start">
+<h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">#</a></h1>
+<section id="step-1-open-up-cesm-lab">
+<h2>Step 1: Open up CESM-Lab<a class="headerlink" href="#step-1-open-up-cesm-lab" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p>In your web browser go to <a href="https://ctsmworkshop2022.cesm.cloud/" target="_blank"> https://ctsmworkshop2022.cesm.cloud/</a></p>
+<p>It will automatically open up a portal to connect to the cloud:</p>
+<p><img alt="Screen Shot 2022-05-17 at 1 58 17 AM" src="https://user-images.githubusercontent.com/17344536/168760701-e436721a-3b84-4d82-b28c-026890a22266.png" /></p>
+</li>
+<li><p>Enter your username and password provided with your tutorial registration</p></li>
+<li><p>This should launch a JupyterLab window in your browser.</p></li>
+</ul>
+</section>
+<section id="step-2-clone-ctsm-tutorial-repository">
+<h2>Step 2: Clone CTSM Tutorial Repository<a class="headerlink" href="#step-2-clone-ctsm-tutorial-repository" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Click on the <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> icon to open a terminal window.</p></li>
+</ul>
+<p><img alt="Screen Shot 2022-05-17 at 2 05 32 AM" src="https://user-images.githubusercontent.com/17344536/168761721-b87d21a0-f92a-4040-9296-926f9b234113.png" /></p>
+<ul class="simple">
+<li><p>Run the following command to clone this repository. (Just copy and paste the text below into the terminal window that opens in JupyterLab)</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">NCAR</span><span class="o">/</span><span class="n">CTSM</span><span class="o">-</span><span class="n">Tutorial</span><span class="o">-</span><span class="mi">2022</span>
+</pre></div>
+</div>
+<p>This gives you a local copy of the material you’ll need for the tutorial</p>
+<p><em>Can you see a new directory on your navigation sidebar called <code class="docutils literal notranslate"><span class="pre">CTSM-Tutorial-2022</span></code>?</em> (See the left sidebar of your JupyterLab window)
+<img alt="Screen Shot 2022-05-17 at 4 46 13 PM" src="https://user-images.githubusercontent.com/17344536/168924550-f7a3f821-7e5a-48e3-9155-9ffdff954ca1.png" /></p>
+</section>
+<section id="step-3-navigate-to-notebooks-directory">
+<h2>Step 3: Navigate to <code class="docutils literal notranslate"><span class="pre">notebooks</span></code> directory<a class="headerlink" href="#step-3-navigate-to-notebooks-directory" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Click on the <code class="docutils literal notranslate"><span class="pre">CTSM-Tutorial-2022</span></code> directory</p></li>
+<li><p>Click on the <code class="docutils literal notranslate"><span class="pre">notebooks</span></code> directory</p></li>
+<li><p>Click on the <code class="docutils literal notranslate"><span class="pre">Day0a_GitStarted.ipynb</span></code> notebook in the sidebar of your JupyterLab window.</p></li>
+</ul>
+<p>Now you’re ready to get started with the pre-tutorial homework.  Let’s git started by following along in the Day0a notebook</p>
+</section>
+<section id="resources">
+<h2>📚 Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://github.com/ESCOMP/ctsm">CTSM Repository</a> which includes the <a class="reference external" href="https://github.com/ESCOMP/CTSM/wiki">CTSM Wiki page</a> that has lots of resources, including much of the following:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://escomp.github.io/ctsm-docs/versions/master/html/index.html">CTSM Technical Documentation</a></p></li>
+<li><p><a class="reference external" href="https://escomp.github.io/ctsm-docs/versions/master/html/users_guide/index.html">CTSM User’s Guide</a></p></li>
+<li><p><a class="reference external" href="https://escomp.github.io/CESM/release-cesm2/quickstart.html#create-a-case">Quickstart Guide for Various Model Configuraions</a></p></li>
+<li><p><a class="reference external" href="https://escomp.github.io/ctsm-docs/versions/master/html/users_guide/running-single-points/single-point-and-regional-grid-configurations.html">Running single-point cases other than NEON</a></p></li>
+<li><p><a class="reference external" href="https://ncar.github.io/ncar-neon-books/intro.html">Running NEON cases with a container</a> – Running CTSM for NEON cases on a laptop</p></li>
+</ul>
+<p><a class="reference external" href="https://doi.org/10.1029/2018MS001583">CLM5 Overview Paper</a> Lawrence et al. 2019 JAMES</p>
+<p><a class="reference external" href="https://www.cesm.ucar.edu/experiments/cesm2.0/land/diagnostics/clm_diag_PCKG.html">CLM5 Diagnostic plots</a>, from the overview paper.</p>
+<p><a class="reference external" href="https://www.cesm.ucar.edu/experiments/cesm2.0/land/diagnostics/clm_diag_ILAMB.html">CLM5 ILAMB page</a>, also from the overview paper.</p>
+</section>
+<section id="questions">
+<h2>❓ Questions<a class="headerlink" href="#questions" title="Permalink to this headline">#</a></h2>
+<p>For questions about running simulations, please use DiscussCESM Forums:</p>
+<p><a class="reference external" href="https://bb.cgd.ucar.edu/cesm/forums/containers-cloud-platforms.162/">Containers &amp; Cloud Platforms Forum</a></p>
+<p><a class="reference external" href="https://bb.cgd.ucar.edu/cesm/forums/ctsm-clm-mosart-rtm.134/">CTSM Forum</a></p>
+</section>
+<section id="acknowledgements">
+<h2>👍 Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">#</a></h2>
+<p>A number of people have been critical to this effort, including:</p>
+<ul class="simple">
+<li><p>Adrianna Foster, Negin Sobhani, Danica Lombardozzi &amp; Will Wieder who put together tutorial materials.</p></li>
+<li><p>Brian Dobbins, who put together the AWS configuration of CESM-Lab;</p></li>
+<li><p>Jackie Shuman, Polly Buotte, &amp; Keith Oleson, who tested tutorial materials;</p></li>
+<li><p>Erik Kluzek &amp; Bill Sacks, who made CTSM tags needed for running simulations.</p></li>
+<li><p>Elizabeth Faircloth and Ryan Johnson who helped with tutorial registration, logistics and webpages; and finally the rest of the</p></li>
+<li><p>TSS staff who provided lecture materials and helped answer questions during the tutorial.</p></li>
+</ul>
+<p>This material is based upon work supported by the National Center for Atmospheric Research (NCAR), which is a major facility sponsored by the National Science Foundation (NSF) under Cooperative Agreement No. 1852977. Staff time on this project was also supported by NSF award numbers 2039932, 2031238, 1926413, and 2120804.</p>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='right-next' id="next-link" href="notebooks/Day0a_GitStarted.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tutorial 0a: <em>CTSM, CESM-Lab, &amp; Git</em></p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Negin Sobhani, Danica Lombardozzi, Adrianna Foster, Will Wieder<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
